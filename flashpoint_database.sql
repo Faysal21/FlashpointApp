@@ -1,14 +1,18 @@
 CREATE TABLE users(
-	id NUMERIC PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	username VARCHAR,
-	pwd VARCHAR
+	pwd VARCHAR,
+	role VARCHAR
 );
 
 CREATE TABLE cards(
-	id NUMERIC PRIMARY KEY,
-	owner_id NUMERIC,
-	deck_id NUMERIC,
-	deck_order NUMERIC,
+	id SERIAL PRIMARY KEY,
 	question VARCHAR,
-	answer VARCHAR
+	answer VARCHAR,
+	set_id NUMERIC
+);
+
+CREATE TABLE owners(
+	owner_id NUMERIC,
+	set_id NUMERIC
 );
