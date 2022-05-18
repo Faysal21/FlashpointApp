@@ -7,6 +7,8 @@ CREATE TABLE users(
 CREATE TABLE cards(
 	id NUMERIC PRIMARY KEY,
 	owner_id NUMERIC,
+	deck_id NUMERIC,
+	deck_order NUMERIC,
 	question VARCHAR,
 	answer VARCHAR
 );
