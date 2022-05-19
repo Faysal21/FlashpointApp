@@ -9,10 +9,11 @@ CREATE TABLE cards(
 	id SERIAL PRIMARY KEY,
 	question VARCHAR,
 	answer VARCHAR,
-	set_id NUMERIC
+	deck_id NUMERIC
 );
 
-CREATE TABLE owners(
+CREATE TABLE decks(
 	owner_id NUMERIC,
-	set_id NUMERIC
+	deck_id NUMERIC,
+	deck_name VARCHAR
 );
