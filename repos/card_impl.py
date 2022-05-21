@@ -1,3 +1,4 @@
+from exceptions.resource_not_found import ResourceNotFound
 from models.card import Card
 from repository.card_repo import CardRepo
 from utility.db_conn import connection
@@ -26,7 +27,7 @@ class CardImpl(CardRepo):
         if query:
             return _build_card(query)
         else:
-            raise  # TODO: raise a "ResourceNotFound" exception
+            raise ResourceNotFound(f'No record found for Card {update.card_id}')
 
     def get_card(self, card_id):
         sql = 'select * from cards where card_id = %s'
@@ -36,7 +37,7 @@ class CardImpl(CardRepo):
         if query:
             return _build_card(query)
         else:
-            raise  # TODO: raise a "ResourceNotFound" exception
+            raise ResourceNotFound(f'No record found for Card {card_id}')
 
     def all_card(self):
         sql = 'select * from cards'
