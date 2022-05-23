@@ -10,9 +10,7 @@ serv = CardServ(repo)
 def route(app):
     @app.route('/cards', methods=['POST'])
     def create_card():
-        body = request.json
-        card = Card(question=body['question'], answer=body['answer'], deck_id=body['deckID'])
-        return serv.create_card(card).json()
+        return "This path creates a new card."
 
     @app.route('/cards/<card_id>', methods=['GET'])
     def get_card(card_id):
