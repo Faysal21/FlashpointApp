@@ -91,7 +91,7 @@ public class UserRepoImpl implements UserRepo {
     public User updateUser(User change) {
 
         try {
-            String sql = "UPDATE users SET username=?, password=?, user_role=? WHERE user_id = ? RETURNING *";
+            String sql = "UPDATE users SET username=?, pwd=?, user_role=? WHERE user_id = ? RETURNING *";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setString(1, change.getUsername());
@@ -137,7 +137,7 @@ public class UserRepoImpl implements UserRepo {
         User u = new User();
         u.setUserId(rs.getInt("user_id"));
         u.setUsername(rs.getString("username"));
-        u.setPassword(rs.getString("password"));
+        u.setPassword(rs.getString("pwd"));
         u.setUserRole(rs.getString("user_role"));
 
         return u;
