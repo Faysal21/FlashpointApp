@@ -1,16 +1,17 @@
 from exceptions.resource_not_found import ResourceNotFound
 from models.card import Card
-from repository.card_repo import CardRepo
-from utility.db_conn import connection
+from repos.card_repo import CardRepo
+from utils.db_conn import connection
 
 
 def _build_card(query):
-    return Card(card_id=query[0], question=query[1], answer=query[2], deck_id=query[3])
+    return Card(card_id=query[0], question=query[1], answer=query[2], deck_id=(int(query[3]) if query[3] else 0))
 
 
 class CardImpl(CardRepo):
     def create_card(self, card):
         sql = 'insert into cards values (default, %s,%s,%s) returning *'
+
         cursor = connection.cursor()
         cursor.execute(sql, [card.question, card.answer, card.deck_id])
         connection.commit()
