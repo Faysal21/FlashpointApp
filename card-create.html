@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap" rel="stylesheet">
+    <title>Card Creation</title>
+    <style>
+        h1 {
+        font-family: "Raleway", sans-serif;
+        font-size: 4em;
+        text-align: center;
+        }
+         body {
+            background: linear-gradient(red, brown);
+            background-position: center;
+            height: 100vh;
+            font-family: "Raleway", sans-serif;
+
+        }
+        input {
+            text-align: center;
+            font-size: x-large;
+            border: 1px solid darkred;
+        }
+        button {
+            border: 1px solid transparent;
+            color: white;
+            font-size: larger;
+        }
+        .vertical-line {
+            display: inline;
+            border-left: 2px solid white;
+        }
+    </style>
+</head>
+<body onload="loadUser()">
+
+    <h1 style="color: gold; font-style: italic;">Flashpoint</h1>
+    <hr style="color: white;">
+
+    <div style="text-align:right; display: flex;justify-content: space-around;">
+        <span id="user" style="font-size: 2rem;color: white;"></span>
+        <span class="vertical-line"></span>
+        <button style="background-color: transparent;" onclick="location.href='card-create.html'">Create New Set</button>
+        <span class="vertical-line"></span>
+        <button style="background-color: transparent;" onclick="location.href=''">Go to Set</button>
+        <span class="vertical-line"></span>
+    <button style="background-color: transparent;" onclick="location.href='login-register.html'">Log Out</button>
+    </div>
+
+    <div style="margin-top: 5%; text-align: center;">
+        <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);" type="text" id="deckid" placeholder="Deck ID" ><br>
+        <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);" type="text" id="deckname" placeholder="Deck Name"><br><br>
+        <input id="decksubmit" style="background-color: transparent ; border: 0px; font-style: italic; color: white;"
+            onclick="createNewDeck()" type="submit" value="Submit Deck">
+    </div>
+    <div hidden id="questionForm" style="margin-top: 15%; text-align: center;">
+        <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);width: 80%;" type="text" id="question" placeholder="Question"><br>
+        <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);" type="text" id="answer" placeholder="Answer"><br><br>
+        <input style="background-color: transparent ; border: 0px; font-style: italic;color: white;"
+            onclick="addNewCard()" type="Submit" value="Submit Card">
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+</html>
