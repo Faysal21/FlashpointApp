@@ -13,14 +13,14 @@
             background: linear-gradient(red, brown);
             background-position: center;
             text-align: center;
-            height: 100vh;            
+            height: 100vh;
         }
         input {
             border: 1px solid darkred;
             font-size: xx-large;
             text-align: center;
 
-            
+
         }
         button {
             font-size: larger;
@@ -28,17 +28,18 @@
     </style>
 </head>
 <body>
+    <script src="script.js"></script>
     <h1 style="color: gold; font-style: italic;">Flashpoint</h1>
     <hr style="color: white;">
     <div style="margin-top: 20%;">
         <input style="background: linear-gradient(90deg, gold,darkgoldenrod);" type="text" id="uName" placeholder="Username"><br>
         <input style="background: linear-gradient(90deg, gold,darkgoldenrod);" required type="password" id="pWord" placeholder="Password"><br><br>
-        <input type="submit" style="background-color: transparent ; border: 0px;color: white;font-style: italic;"
+        <input type="submit" onclick="login()" style="background-color: transparent ; border: 0px;color: white;font-style: italic;"
             value="Login">
-        <input type="submit" style="background-color: transparent ; border: 0px;color: white;font-style: italic;"
+        <input type="submit" onclick="register()" style="background-color: transparent ; border: 0px;color: white;font-style: italic;"
             value="Register">
     </div>
 
-    
+
 </body>
 </html>
