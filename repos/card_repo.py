@@ -21,3 +21,7 @@ class CardRepo(ABC):
     @abstractmethod
     def delete_card(self, card_id):
         pass
+
+    @abstractmethod
+    def get_card_by_deck(self, deck_id):
+        pass

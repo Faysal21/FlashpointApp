@@ -1,4 +1,4 @@
-from repository.card_repo import CardRepo
+from repos.card_repo import CardRepo
 
 
 class CardServ:
@@ -19,3 +19,6 @@ class CardServ:
 
     def delete_card(self, card_id):
         return self.card_repo.delete_card(card_id)
+
+    def get_card_by_deck(self, deck_id):
+        return self.card_repo.get_card_by_deck(deck_id)

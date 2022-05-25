@@ -7,11 +7,12 @@ from flask import request, jsonify
 repo = CardImpl()
 serv = CardServ(repo)
 
+
 def route(app):
     @app.route('/cards', methods=['POST'])
     def create_card():
         body = request.json
-        card = Card(question=body['question'], answer=body['answer'], deck_id=body['deckID'])
+        card = Card(question=body['question'], answer=body['answer'], deck_id=body['deckId'])
         return serv.create_card(card).json()
 
     @app.route('/cards/<card_id>', methods=['GET'])
@@ -50,3 +51,13 @@ def route(app):
         serv.delete_card(int(card_id))
 
         return "Card with ID no. " + card_id + " was deleted."
+
+    @app.route('/cards/decks/<deck_id>', methods=['GET'])
+    def cards_by_deck(deck_id):
+        try:
+            card_list = serv.get_card_by_deck(int(deck_id))
+            return jsonify([c.json() for c in card_list])
+        except ValueError:
+            return f'{deck_id} no a valid deck id'
+        except ResourceNotFound as r:
+            return r.message, 404

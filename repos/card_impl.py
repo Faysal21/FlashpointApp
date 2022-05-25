@@ -1,17 +1,27 @@
 from exceptions.resource_not_found import ResourceNotFound
 from models.card import Card
 from repos.card_repo import CardRepo
-from utils.db_conn import connection
+from utility.db_conn import connection
 
 
 def _build_card(query):
-    return Card(card_id=query[0], question=query[1], answer=query[2], deck_id=(int(query[3]) if query[3] else 0))
+    return Card(card_id=query[0], question=query[1], answer=query[2], deck_id=query[3])
 
 
 class CardImpl(CardRepo):
+    def get_card_by_deck(self, deck_id):
+        sql = 'select * from cards where deck_id = %s'
+        cursor = connection.cursor()
+        cursor.execute(sql, [deck_id])
+        query = cursor.fetchall()
+        card_list = [_build_card(q) for q in query]
+        if query:
+            return card_list
+        else:
+            raise ResourceNotFound(f'No Cards found for Deck {deck_id}')
+
     def create_card(self, card):
         sql = 'insert into cards values (default, %s,%s,%s) returning *'
-
         cursor = connection.cursor()
         cursor.execute(sql, [card.question, card.answer, card.deck_id])
         connection.commit()
@@ -60,8 +70,8 @@ def _test():
     cr = CardImpl()
     # card = Card(question='What Anime did Vash the Stampede appear', answer='Trigun', deck_id=2)
     card = cr.get_card(2)
-    card.question = 'Who is the Main character in the anime Trigun?'
-    card.answer = 'Vash The Stampede'
+    # card.question = 'Who is the Main character in the anime Trigun?'
+    # card.answer = 'Vash The Stampede'
     card = cr.update_card(card)
     print(card)
 
