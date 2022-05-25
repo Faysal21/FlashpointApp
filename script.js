@@ -1,3 +1,13 @@
+// Function to load user details to pages when logged in
+async function loadUser() {
+  let getUsername = sessionStorage.getItem("creds");
+  document.getElementById('user').innerHTML = getUsername;
+}
+
+
+
+
+
 // For login and registration page ------------
 async function login() {
   let usernameGiven = document.getElementById('uName').value;
@@ -22,8 +32,8 @@ async function login() {
   }
 
   if (userCanLogin) {
-    alert("Going to the home page...");
-    // window.location.href="Home Page"
+    alert("Going to the home page...")
+    window.location.href="card-create.html"
   }
   else alert("Credentials were invalid. Please try again.");
 }
@@ -82,11 +92,65 @@ function revealAnswer() {
 
 }
 
-// For card/set creator/editor page -----------
-function createNewDeck() {
+function sortCardsInDeck() {
 
 }
 
-function addNewCard(deck) {
+// For card/set creator/editor page -----------
+async function createNewDeck() {
+  // Gather details for new deck
+  let newDeckDetails = {
+    deckId: document.getElementById("deckid").value,
+    userId: sessionStorage.getItem("userID"),
+    deckName: document.getElementById("deckname").value
+  };
 
+  // Send details to server and create new deck
+  const newDeckURL = 'http://localhost:5000/decks';
+  const newDeckOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newDeckDetails)
+  };
+  const newDeckResponse = await fetch(newDeckURL, newDeckOptions);
+  const newDeck = await newDeckResponse.json();
+  console.log(newDeck);
+
+  if (newDeck) {
+    alert(`Your new deck ${newDeck.deckName} has been added. Start putting in cards!`)
+    sessionStorage.setItem("deckID", newDeck.deckId)
+  }
+
+
+
+  // Disable deck fields after creating new deck
+  document.getElementById('questionForm').hidden = false;
+  document.getElementById('deckid').disabled = true;
+  document.getElementById('deckname').disabled = true;
+  document.getElementById('decksubmit').disabled = true;
+}
+
+async function addNewCard() {
+  // Place card details into an object that will be parsed to JSON
+  let newCardDetails = {
+    question: document.getElementById('question').value,
+    answer: document.getElementById('answer').value,
+    deckID: sessionStorage.getItem("deckID")
+  };
+
+  // Send new card info to server and add to database
+  const newCardURL = 'http://localhost:5000/cards';
+  const newCardOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newCardDetails)
+  };
+  const newCardResponse = await fetch(newCardURL, newCardOptions);
+  const newCard = await newCardResponse.json();
+  console.log(`Added to  ${document.getElementById('deckname').value} : `);
+  console.log(newCard);
+
+  // Clear card form fields after creating
+  document.getElementById('question').value = null;
+  document.getElementById('answer').value = null;
 }
