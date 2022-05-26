@@ -5,6 +5,7 @@ async function loadUser() {
   let getUserRole =sessionStorage.getItem('role')
   if (getUserRole === "Standard User") {
     document.getElementById("mySets").hidden = true
+    document.getElementById("mySetsTable").hidden = true
     document.getElementById("mySetsSpan").style.display = 'none'
   }
 }
