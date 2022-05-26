@@ -2,6 +2,11 @@
 async function loadUser() {
   let getUsername = sessionStorage.getItem("creds");
   document.getElementById('user').innerHTML = getUsername;
+  let getUserRole =sessionStorage.getItem('role')
+  if (getUserRole === "Standard User") {
+    document.getElementById("mySets").hidden = true
+    document.getElementById("mySetsSpan").style.display = 'none'
+  }
 }
 
 
@@ -33,7 +38,7 @@ async function login() {
 
   if (userCanLogin) {
     alert("Going to the home page...")
-    window.location.href="card-create.html"
+    window.location.href="homepg.html"
   }
   else alert("Credentials were invalid. Please try again.");
 }
