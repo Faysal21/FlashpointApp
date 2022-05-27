@@ -85,9 +85,9 @@
     <div style="text-align:right; display: flex;justify-content: space-around;">
         <span id="user" style="font-size: larger;color: white;"></span>
         <span class="vertical-line"></span>
-        <button style="background-color: transparent;" onclick="location.href='card-create.html'">Create New Set</button>
-        <span class="vertical-line"></span>
-        <button style="background-color: transparent;" onclick="location.href=''">Go to Set</button>
+        <button id="mySets" style="background-color: transparent;" onclick="location.href='card-create.html'">Create New Set</button>
+        <span id="mySetsSpan" class="vertical-line"></span>
+        <button style="background-color: transparent;" onclick="location.href='homepage.html'">Go Home</button>
         <span class="vertical-line"></span>
     <button style="background-color: transparent;" onclick="location.href='login-register.html'">Log Out</button>
     </div>
@@ -104,7 +104,7 @@
         <div class="submitAnswer" style="margin: 1%;">
             <input id="cardAnswer" style="background: linear-gradient(90deg, gold,darkgoldenrod);width: 50%;text-align: center; font-size: x-large;" type="text" placeholder="Place answer Here" >
             <input id="AnswerSubmit" onclick="getUserResponse()" style="background: linear-gradient(90deg, gold,darkgoldenrod);text-align: center; font-size: x-large;color: white;" type="Submit" value="Submit" ><br>
-            <input id="nextQuestion" onclick="revealAnswer()" style="background: linear-gradient(90deg, gold,darkgoldenrod);text-align: center; font-size: x-large;color: white;margin-top: 1%;" type="Submit" value="Next Card" disabled >
+            <input id="nextQuestion" style="background: linear-gradient(90deg, gold,darkgoldenrod);text-align: center; font-size: x-large;color: white;margin-top: 1%;" type="Submit" value="Next Card" disabled >
         </div>
     </div>
     <script src="script.js"></script>

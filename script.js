@@ -3,11 +3,10 @@ async function loadUser() {
   let getUsername = sessionStorage.getItem("creds");
   document.getElementById('user').innerHTML = getUsername;
   let getUserRole =sessionStorage.getItem('role')
-  // if (getUserRole === "Standard User") {
-  //   document.getElementById("mySets").hidden = true
-  //   document.getElementById("mySetsTable").hidden = true
-  //   document.getElementById("mySetsSpan").style.display = 'none'
-  // }
+  if (getUserRole === "Standard User") {
+    document.getElementById("mySets").hidden = true
+    document.getElementById("mySetsSpan").style.display = 'none'
+   }
 }
 
 function loadForHomePage() {
@@ -17,6 +16,8 @@ function loadForHomePage() {
 }
 
 async function loadDeckBrowsing() {
+  loadUser();
+
   let getDeckBrowsing = sessionStorage.getItem("deckBrowsing");
 
   const questionElement = document.createElement('span');
@@ -34,8 +35,24 @@ async function loadDeckBrowsing() {
     questionBlock.appendChild(questionElement);
     const answerBlock = document.getElementById('flipCardAnswer');
     answerBlock.appendChild(answerElement);
+
+    let copy = deck.slice(1);
+    let iterate = copy[Symbol.iterator]();
+    document.getElementById("nextQuestion").onclick = function() {
+      let next = iterate.next()
+      if (next.done) {alert("No more cards in the deck; you're finished!")}
+      else {
+        console.log(next.value.question)
+        questionBlock.innerText = next.value.question
+        revealAnswer()
+
+        answerBlock.innerText = next.value.answer
+      }
+    };
   }
   else alert("There was an error in obtaining cards from this deck. Try again later.");
+
+
 }
 
 
@@ -122,22 +139,32 @@ async function getDecks() {
   // Load a random number of decks that a standard user can choose from
   // Then add each deck to table with a link to the deck page
   let decks = [];
-  for (let i = 0; i < 3; i++) {
+  console.log(deckList.length);
+  for (let i = 0; i < deckList.length; i++) {
     decks.push(deckList[i]);
 
+    const outerElement = document.createElement('tr');
+    const innerElement = document.createElement('td');
     const elmnt = document.createElement('a');
 
+
+    innerElement.setAttribute('class', 'deckinfo');
     elmnt.setAttribute('id', 'deckLink');
     elmnt.setAttribute('href', 'flashpoint-test.html'); // Change this later
 
     let deckName = decks[i].deckName;
-    //console.log(deckName);
+    console.log(deckName);
     elmnt.textContent = deckName;
 
-    const deckTable = document.querySelectorAll(".deckinfo");
-    deckTable[i].appendChild(elmnt);
+    //console.log(innerElement);
+    //const deckTable = document.querySelectorAll(".deckinfo");
+    const parent = document.getElementById("parent");
+    parent.appendChild(outerElement);
+    outerElement.appendChild(innerElement);
+    innerElement.appendChild(elmnt);
+    //console.log(outerElement);
 
-    deckTable[i].addEventListener("click", event => {
+    elmnt.addEventListener("click", event => {
       sessionStorage.setItem("deckBrowsing", decks[i].deckId);
     });
   }
@@ -156,6 +183,8 @@ function revealAnswer() {
   card.classList.toggle('animation');
   document.getElementById('AnswerSubmit').disabled = false
   document.getElementById('nextQuestion').disabled = true
+
+  document.getElementById('cardAnswer').value = null
 }
 
 function sortCardsInDeck() {
@@ -201,7 +230,7 @@ async function addNewCard() {
   let newCardDetails = {
     question: document.getElementById('question').value,
     answer: document.getElementById('answer').value,
-    deckID: sessionStorage.getItem("deckID")
+    deckId: sessionStorage.getItem("deckID")
   };
 
   // Send new card info to server and add to database

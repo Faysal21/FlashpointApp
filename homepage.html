@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap" rel="stylesheet">
+    <Title>User Home Page</Title>
+    <style>
+        body {
+            background: linear-gradient(red, brown);
+            height: 100vh;
+            font-family: "Raleway", sans-serif;
+        }
+        h1{
+        text-align:center;
+        font-family: "Raleway", sans-serif;
+        font-size: 4em;
+        }
+
+        button {
+            border: transparent;
+            color: white;
+            font-size: larger;
+        }
+        .vertical-line{
+            display: inline;
+            border-left: 2px solid white;
+        }
+
+        table {
+        border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+
+        border: 1px solid #dddddd;
+        text-align: left;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+        tr:nth-child(odd)  {
+            background-color: rgb(161, 161, 159);
+        }
+        .deckinfo {
+          width: 1000px
+        }
+
+    </style>
+
+
+
+</head>
+<body onload="loadForHomePage()">
+    <h1 style="color: gold; font-style: italic;">Flashpoint</h1>
+    <hr style="color: white;">
+
+    <div style="text-align:right; display: flex;justify-content: space-around;">
+        <span id="user" style="font-size: larger;color: white; "></span>
+        <span class="vertical-line"></span>
+        <button id="mySets" style="background-color: transparent;" onclick="location.href='card-create.html'">Create New Deck</button>
+        <span id="mySetsSpan" class="vertical-line"></span>
+        <button style="background-color: transparent;" onclick="location.href=''">Go to Deck</button>
+        <span class="vertical-line"></span>
+        <button style="background-color: transparent;" onclick="location.href='login-register.html'">Log Out</button>
+    </div>
+    <hr style="color: white;">
+
+
+
+    <div id="mySetsTable" style="text-align: center; color: white;font-size: x-large;">
+        <h3>My Sets</h3>
+        <table>
+            <tr>
+                <th>Set</th>
+            </tr>
+            <tr id="parent" style="width: 100%">
+            </tr>
+
+        </table>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
