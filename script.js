@@ -2,6 +2,18 @@
 async function loadUser() {
   let getUsername = sessionStorage.getItem("creds");
   document.getElementById('user').innerHTML = getUsername;
+  let getUserRole =sessionStorage.getItem('role')
+  // if (getUserRole === "Standard User") {
+  //   document.getElementById("mySets").hidden = true
+  //   document.getElementById("mySetsTable").hidden = true
+  //   document.getElementById("mySetsSpan").style.display = 'none'
+  // }
+}
+
+function loadForHomePage() {
+  loadUser();
+
+  getDecks();
 }
 
 
@@ -10,11 +22,13 @@ async function loadUser() {
 
 // For login and registration page ------------
 async function login() {
+  // Gather credentials entered in username and password fields
   let usernameGiven = document.getElementById('uName').value;
   let passwordGiven = document.getElementById('pWord').value;
 
   let userCanLogin = false;
 
+  // GET all users from database for verification loop
   const userListURL = 'http://localhost:7000/users';
   const userListResponse = await fetch(userListURL);
   const userList = await userListResponse.json();
@@ -31,29 +45,33 @@ async function login() {
     }
   }
 
+  // Proceed to home page if the user is set to login, otherwise alert them of bad username/password
   if (userCanLogin) {
     alert("Going to the home page...")
-    window.location.href="card-create.html"
+    window.location.href="homepage.html"
   }
   else alert("Credentials were invalid. Please try again.");
 }
 
 async function register() {
+  // Gather credentials entered in username and password fields
   let usernameGiven = document.getElementById('uName').value;
   let passwordGiven = document.getElementById('pWord').value;
 
   let userCanRegister = true;
 
+  // GET all users from database for verification loop
   const userListURL = 'http://localhost:7000/users';
   const userListResponse = await fetch(userListURL);
   const userList = await userListResponse.json();
 
+  // Check to see if the credentials match a user
   for (let user of userList) {
     if (usernameGiven === user.username) userCanRegister = false;
   }
 
+  // Proceed if the username exists, otherwise tell the user the given username already exists
   if (!userCanRegister) alert("That username is taken. Please provide a different one.");
-  // add the new user credentials to database
   else {
     const createUserData = {
       username: usernameGiven,
@@ -75,21 +93,49 @@ async function register() {
 }
 
 // For home page ------------------------------
-function getMySets(userId) {
+async function getDecks() {
+  // Load all decks
+  const deckListURL = 'http://localhost:5000/decks';
+  const deckListResponse = await fetch(deckListURL);
+  const deckList = await deckListResponse.json();
 
-}
+  // Load a random number of decks that a standard user can choose from
+  // Then add each deck to table with a link to the deck page
+  let decks = [];
+  for (let i = 0; i < 3; i++) {
+    decks.push(deckList[i]);
 
-function getSets() {
+    const elmnt = document.createElement('a');
 
+    elmnt.setAttribute('id', 'deckLink');
+    elmnt.setAttribute('href', 'FlashpointTest.html');
+
+    let deckName = decks[i].deckName;
+    //console.log(deckName);
+    elmnt.textContent = deckName;
+
+    const deckTable = document.querySelectorAll(".deckinfo");
+    deckTable[i].appendChild(elmnt);
+
+    deckTable[i].addEventListener("click", event => {
+      sessionStorage.setItem("deckBrowsing", decks[i].deckId);
+    });
+  }
 }
 
 // For card viewer page -----------------------
 function getUserResponse() {
-
+  var card = document.querySelector('.flip-card-inner');
+  card.classList.toggle('animation');
+  document.getElementById('AnswerSubmit').disabled = true
+  document.getElementById('nextQuestion').disabled = false
 }
 
 function revealAnswer() {
-
+  var card = document.querySelector('.flip-card-inner');
+  card.classList.toggle('animation');
+  document.getElementById('AnswerSubmit').disabled = false
+  document.getElementById('nextQuestion').disabled = true
 }
 
 function sortCardsInDeck() {
