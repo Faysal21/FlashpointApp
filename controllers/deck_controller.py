@@ -2,7 +2,7 @@ from flask import jsonify, request
 
 from exceptions.resource_not_found import ResourceNotFound
 from models.deck import Deck
-from repository.deck_repo_impl import DeckRepoImpl
+from repos.deck_repo_impl import DeckRepoImpl
 from services.deck_serv import DecksServ
 
 dr = DeckRepoImpl()

@@ -11,8 +11,8 @@ class TestCardRepo(unittest.TestCase):
     def test_1_create(self):
         TestCardRepo.sample_card = repo.create_card(self.sample_card)
         self.assertEqual(self.sample_card.json(), Card(card_id=self.sample_card.card_id,
-                                    question="",
-                                    answer="", deck_id=0).json())
+                                                       question="",
+                                                       answer="", deck_id=0).json())
 
     def test_2_get(self):
         card = repo.get_card(2).json()
@@ -26,13 +26,21 @@ class TestCardRepo(unittest.TestCase):
 
     def test_4_update(self):
         TestCardRepo.sample_card = repo.update_card(Card(card_id=4,
-                                    question="Why is Gamora?",
-                                    answer="", deck_id=7))
+                                                         question="Why is Gamora?",
+                                                         answer="", deck_id=7))
         self.assertEqual(self.sample_card.question, "Why is Gamora?")
         print(self.sample_card)
 
     def test_5_delete(self):
         self.assertIsNotNone(repo.delete_card(8))
+
+    def test_6_get_card_by_deck(self):
+        cards = [card.json() for card in repo.get_card_by_deck(5)]
+
+        self.assertIn(Card(card_id=10,
+                           question="A PlayStation hit when it comes to adventure...",
+                           answer="Uncharted",
+                           deck_id=5).json(), cards)
 
 
 if __name__ == '__main__':

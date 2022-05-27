@@ -1,4 +1,4 @@
-from repository.deck_repo import DecksRepo
+from repos.deck_repo import DecksRepo
 
 
 class DecksServ:

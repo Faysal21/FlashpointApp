@@ -1,5 +1,5 @@
 from repos.card_impl import CardImpl
-from services.card_serv import CardServ
+from services.CardServ import CardServ
 from models.card import Card
 from exceptions.resource_not_found import ResourceNotFound
 from flask import request, jsonify

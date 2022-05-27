@@ -1,7 +1,7 @@
 from exceptions.resource_not_found import ResourceNotFound
 from models.card import Card
 from repos.card_repo import CardRepo
-from utility.db_conn import connection
+from utils.db_conn import connection
 
 
 def _build_card(query):

@@ -9,7 +9,7 @@ def create_connection():
             user='',
             password='',
             host='',
-            port='5432'
+            port=''
         )
         return conn
     except OperationalError as e:
