@@ -78,7 +78,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="loadDeckBrowsing()">
     <h1 style="color: gold; font-style: italic;">Flashpoint</h1>
     <hr style="color: white;">
 
@@ -96,9 +96,9 @@
         <div id="card" class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <h1>Question</h1><h2>Sample Question</h2></div>
+                    <h1>Question</h1><h2 id="flipCardQuestion"></h2></div>
                 <div class="flip-card-back">
-                    <h1>Answer</h1><h2>Sample Answer</h2></div>
+                    <h1>Answer</h1><h2 id="flipCardAnswer"></h2></div>
             </div>
         </div>
         <div class="submitAnswer" style="margin: 1%;">

@@ -16,7 +16,27 @@ function loadForHomePage() {
   getDecks();
 }
 
+async function loadDeckBrowsing() {
+  let getDeckBrowsing = sessionStorage.getItem("deckBrowsing");
 
+  const questionElement = document.createElement('span');
+  const answerElement = document.createElement('span');
+
+  const getDeckURL = 'http://localhost:5000/cards/decks/' + getDeckBrowsing;
+  const getDeckResponse = await fetch(getDeckURL);
+  if (getDeckResponse.status === 200) {
+    const deck = await getDeckResponse.json();
+
+    questionElement.textContent = deck[0].question;
+    answerElement.textContent = deck[0].answer;
+
+    const questionBlock = document.getElementById('flipCardQuestion');
+    questionBlock.appendChild(questionElement);
+    const answerBlock = document.getElementById('flipCardAnswer');
+    answerBlock.appendChild(answerElement);
+  }
+  else alert("There was an error in obtaining cards from this deck. Try again later.");
+}
 
 
 
@@ -108,7 +128,7 @@ async function getDecks() {
     const elmnt = document.createElement('a');
 
     elmnt.setAttribute('id', 'deckLink');
-    elmnt.setAttribute('href', 'FlashpointTest.html');
+    elmnt.setAttribute('href', 'flashpoint-test.html'); // Change this later
 
     let deckName = decks[i].deckName;
     //console.log(deckName);
