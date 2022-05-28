@@ -26,25 +26,24 @@
             border-left: 2px solid white;
         }
 
-        table {
-        border-collapse: collapse;
-            width: 100%;
-        }
+         
 
         td, th {
 
-        border: 1px solid #dddddd;
-        text-align: left;
+        border: 1px solid #dddddd(161, 161, 159);
+        text-align: center;
+        padding: 8px;
+        }
+        th {
+            background-color: #dddddd;
         }
 
         tr:nth-child(even) {
         background-color: #dddddd;
+        
         }
         tr:nth-child(odd)  {
             background-color: rgb(161, 161, 159);
-        }
-        .deckinfo {
-          width: 1000px
         }
 
     </style>
@@ -61,21 +60,19 @@
         <span class="vertical-line"></span>
         <button id="mySets" style="background-color: transparent;" onclick="location.href='card-create.html'">Create New Deck</button>
         <span id="mySetsSpan" class="vertical-line"></span>
-        <button style="background-color: transparent;" onclick="location.href=''">Go to Deck</button>
-        <span class="vertical-line"></span>
+        <button style="background-color: transparent;" onclick="location.href='homepage.html'" hidden>Homepage</button>
+        <span class="vertical-line" style="display: none;"></span>
         <button style="background-color: transparent;" onclick="location.href='login-register.html'">Log Out</button>
     </div>
     <hr style="color: white;">
 
 
 
-    <div id="mySetsTable" style="text-align: center; color: white;font-size: x-large;">
-        <h3>My Sets</h3>
-        <table>
-            <tr>
-                <th>Set</th>
+    <div id="mySetsTable" style="text-align: center; color: white;font-size: x-large; text-align: center;">
+        <h3>Decks Available</h3>
+        <table style="margin: auto ;">
             </tr>
-            <tr id="parent" style="width: 100%">
+            <tr id="parent">
             </tr>
 
         </table>

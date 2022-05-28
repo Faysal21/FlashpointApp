@@ -1,7 +1,7 @@
 // Function to load user details to pages when logged in
 async function loadUser() {
   let getUsername = sessionStorage.getItem("creds");
-  document.getElementById('user').innerHTML = getUsername;
+  document.getElementById('user').innerHTML = `Welcome , ${getUsername}`;
   let getUserRole =sessionStorage.getItem('role')
   if (getUserRole === "Standard User") {
     document.getElementById("mySets").hidden = true
@@ -17,6 +17,8 @@ function loadForHomePage() {
 
 async function loadDeckBrowsing() {
   loadUser();
+  let getDeckName = sessionStorage.getItem('deckName')
+  document.getElementById('deckName').innerHTML = getDeckName;
 
   let getDeckBrowsing = sessionStorage.getItem("deckBrowsing");
 
@@ -50,7 +52,7 @@ async function loadDeckBrowsing() {
       }
     };
   }
-  else alert("There was an error in obtaining cards from this deck. Try again later.");
+  else alert(`There was an error in obtaining cards from ${sessionStorage.getItem('deckName')}'s deck. Try again later.`);
 
 
 }
@@ -84,7 +86,7 @@ async function login() {
 
   // Proceed to home page if the user is set to login, otherwise alert them of bad username/password
   if (userCanLogin) {
-    alert("Going to the home page...")
+    alert(`Welcome back, ${sessionStorage.getItem("creds")}`)
     window.location.href="homepage.html"
   }
   else alert("Credentials were invalid. Please try again.");
@@ -166,6 +168,7 @@ async function getDecks() {
 
     elmnt.addEventListener("click", event => {
       sessionStorage.setItem("deckBrowsing", decks[i].deckId);
+      sessionStorage.setItem("deckName", decks[i].deckName)
     });
   }
 }
