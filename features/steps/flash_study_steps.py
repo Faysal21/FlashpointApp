@@ -1,29 +1,35 @@
 import unittest
 
-from behave import given, when, then
-from selenium.webdriver.chrome.webdriver import WebDriver
+from behave import when, then
 
-from features.pages.flash_study import FlashHomePage
-
-
-@given('The User is on the home page')
-def get_to_flash_home(context):
-    driver: WebDriver = context.driver
-    driver.get('insert html file path?')
+from features.pages.flash_home import FlashHomePage
 
 
-@when('When The User clicks on a set they want to study')
-def press_deck_link(context):
+@when('When The User types an answer')
+def types_into_answer_input(context):
     flash_home: FlashHomePage = context.flash_home
-    flash_home.deck_link().click()
+    flash_home.answer_input().send_keys("answer")
 
 
-@then('Then The deck name should be {deckname}')
-def verify_deck_name(context, deckname):
+@when('When The User clicks the submit button')
+def click_submit_btn(context):
+    flash_home: FlashHomePage = context.flash_home
+    flash_home.submit_btn().click()
+
+
+@when('When The answer should be {answer}')
+def verify_answer(context, answer):
     test: unittest.TestCase = context.unittest
-    test.assertEquals(context.driver.deckname, deckname)
+    test.assertEquals(context.driver.answer, answer)
 
 
+@when('When The User clicks the next card button')
+def press_next_button(context):
+    flash_home: FlashHomePage = context.flash_home
+    flash_home.next_btn().click()
 
 
-
+@then('Then The next question should be {question} or the set should be finished')
+def verify_next_question(context, question):
+    test: unittest.TestCase = context.unittest
+    test.assertEquals(context.driver.question, question)
