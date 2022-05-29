@@ -46,7 +46,7 @@
         <span class="vertical-line"></span>
         <button style="background-color: transparent;" onclick="location.href='card-create.html'">Create New Set</button>
         <span class="vertical-line"></span>
-        <button style="background-color: transparent;" onclick="location.href='homepage.html'">Homepage</button>
+        <button style="background-color: transparent;" onclick="location.href=''">Go to Set</button>
         <span class="vertical-line"></span>
     <button style="background-color: transparent;" onclick="location.href='login-register.html'">Log Out</button>
     </div>
@@ -57,12 +57,14 @@
         <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);" type="text" id="deckname" placeholder="Deck Name"><br><br>
         <input id="decksubmit" style="background-color: transparent ; border: 0px; font-style: italic; color: white;"
             onclick="createNewDeck()" type="submit" value="Submit Deck">
+        <div id="newDeckFeedback" style="color: white"></div>
     </div>
     <div hidden id="questionForm" style="margin-top: 15%; text-align: center;">
         <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);width: 80%;" type="text" id="question" placeholder="Question"><br>
         <input required style="background: linear-gradient(90deg, gold,darkgoldenrod);" type="text" id="answer" placeholder="Answer"><br><br>
         <input style="background-color: transparent ; border: 0px; font-style: italic;color: white;"
             onclick="addNewCard()" type="Submit" value="Submit Card">
+        <div id="newCardFeedback" style="color: white"></div>
     </div>
 
 
