@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
 
-from features.pages.flash_study import FlashHomePage
+from features.pages.flash_home import FlashHomePage
 
 
 def before_all(context):
