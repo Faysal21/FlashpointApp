@@ -20,13 +20,15 @@ class FlashHomePage:
         return self.driver.find_element(by=By.ID, value="AnswerSubmit")
 
     def answer_display(self):
-        return self.driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[1]/div/div[2]/h2/span")
+        for element in self.driver.find_elements(by=By.XPATH, value="/html/body/div[2]/div[1]/div/div[2]/h2/span"):
+            return element.text
 
     def next_btn(self):
         return self.driver.find_element(by=By.ID, value="nextQuestion")
 
     def next_question_display(self):
-        return self.driver.find_element(by=By.XPATH, value="/html/body/div[2]/div[1]/div/div[1]/h2/span")
+        for element in self.driver.find_elements(by=By.XPATH, value="/html/body/div[2]/div[1]/div/div[1]/h2"):
+            return element.text
     #
     # def create_btn(self):
     #     return self.driver.find_element(by=By.ID, value="insert path here")
