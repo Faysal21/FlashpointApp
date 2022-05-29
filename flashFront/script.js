@@ -18,6 +18,8 @@ function loadForHomePage() {
 async function loadDeckBrowsing() {
   loadUser();
 
+  let getDeckName = sessionStorage.getItem('deckName');
+  document.getElementById('deckName').innerHTML = getDeckName;
   let getDeckBrowsing = sessionStorage.getItem("deckBrowsing");
 
   const questionElement = document.createElement('span');
@@ -166,6 +168,8 @@ async function getDecks() {
 
     elmnt.addEventListener("click", event => {
       sessionStorage.setItem("deckBrowsing", decks[i].deckId);
+      sessionStorage.setItem("deckName", decks[i].deckName);
+
     });
   }
 }
