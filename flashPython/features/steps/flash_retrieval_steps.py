@@ -14,7 +14,7 @@ def get_to_flash_home(context):
     driver.get(
         'file:///C:/Users/patri/Documents/Coding/RevTraining/Python/Flashpoint/FlashpointApp/flashFront/homepage.html'
     )
-    sleep(.5)
+    sleep(1)
 
 
 @when('The User clicks on the movie directors link')
@@ -35,14 +35,14 @@ def verify_deck_name(context):
 def types_into_answer_input(context):
     flash_home: FlashHomePage = context.flash_home
     flash_home.answer_input().send_keys("answer")
-    sleep(1)
+    sleep(.5)
 
 
 @when('The User clicks the submit button')
 def click_submit_btn(context):
     flash_home: FlashHomePage = context.flash_home
     flash_home.submit_btn().click()
-    sleep(2)
+    sleep(1)
 
 
 @when('The answer should be Russo Brothers')
@@ -50,7 +50,7 @@ def verify_answer(context):
     flash_home: FlashHomePage = context.flash_home
     test: unittest.TestCase = context.unittest
     test.assertEquals(flash_home.answer_display(), "Russo Brothers")
-    sleep(.5)
+    sleep(1)
 
 
 @when('The User clicks the next card button')

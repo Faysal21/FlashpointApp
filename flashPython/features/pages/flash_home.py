@@ -29,28 +29,4 @@ class FlashHomePage:
     def next_question_display(self):
         for element in self.driver.find_elements(by=By.XPATH, value="/html/body/div[2]/div[1]/div/div[1]/h2"):
             return element.text
-    #
-    # def create_btn(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def deck_id_input(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def deck_name_input(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def press_submit_deck_btn(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def new_question_input(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def new_answer_input(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def press_submit_card_btn(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
-    #
-    # def creation_display(self):
-    #     return self.driver.find_element(by=By.ID, value="insert path here")
 
