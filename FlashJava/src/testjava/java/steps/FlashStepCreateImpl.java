@@ -19,11 +19,17 @@ public class FlashStepCreateImpl {
         driver.get(
         "C:/Users/patri/Documents/Coding/RevTraining/Python/Flashpoint/FlashpointApp/flashFront/login-register.html"
         );
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("^The User enters flash_user into the username input$")
     public void the_User_enters_flash_user_into_the_username_input() {
         flashMain.enterUsername();
+
     }
 
     @When("^The User enters pwd1 into the password input$")
@@ -34,6 +40,11 @@ public class FlashStepCreateImpl {
     @When("^The User clicks on the login button$")
     public void the_User_clicks_on_the_login_button() {
         flashMain.pressLoginBtn();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("^The User is on the home page$")
@@ -46,19 +57,29 @@ public class FlashStepCreateImpl {
         flashMain.pressNewDeckBtn();
     }
 
-    @When("^The User types 50 into the id input$")
-    public void the_User_types_50_into_the_id_input() {
+    @When("^The User types 52 into the id input$")
+    public void the_User_types_52_into_the_id_input() {
         flashMain.enterIdInput();
     }
 
     @When("^The User enters basketball into the deck name input$")
     public void the_User_enters_basketball_into_the_deck_name_input() {
         flashMain.enterDeckNameInput();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("^The User clicks the submit deck button$")
     public void the_User_clicks_the_submit_deck_button() {
         flashMain.pressSubmitDeckBtn();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("^The User enters who was the 2022 NBA MVP into the question input$")
@@ -69,16 +90,32 @@ public class FlashStepCreateImpl {
     @When("^The User enters Nikola Jokic into the answer input$")
     public void the_User_enters_Nikola_Jokic_into_the_answer_input() {
         flashMain.enterAnswerInput();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("^The User clicks the submit card button$")
     public void the_User_clicks_the_submit_card_button() {
         flashMain.pressSubmitCardBtn();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    @Then("^The creation message should be <message>$")
+    @Then("^The creation message should be Card successfully added to the deck$")
     public void the_creation_message_should_be_() {
-        Assert.assertEquals()
+        Assert.assertEquals(flashMain.feedbackMessage(), "Card successfully added to the deck!");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

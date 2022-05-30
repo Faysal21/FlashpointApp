@@ -86,7 +86,6 @@ async function login() {
 
   // Proceed to home page if the user is set to login, otherwise alert them of bad username/password
   if (userCanLogin) {
-    alert("Going to the home page...")
     window.location.href="homepage.html"
   }
   else alert("Credentials were invalid. Please try again.");

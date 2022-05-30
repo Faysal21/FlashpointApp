@@ -10,7 +10,7 @@ import pages.FlashMain;
 
 import java.util.concurrent.TimeUnit;
 
-@CucumberOptions(features = {"src/test/resources"}, glue = {"steps"})
+@CucumberOptions(features = {"src/testjava/resources/FlashCreation.feature"}, glue = {"steps"})
 public class TestNGRunner extends AbstractTestNGCucumberTests {
 
     public static WebDriver driver;
@@ -20,7 +20,7 @@ public class TestNGRunner extends AbstractTestNGCucumberTests {
     public void setUp() {
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:/Users/patri/Documents/Coding/RevTraining/Python/chromedriver.exe"
+                "C:/Users/patri/Documents/Coding/chromedriver.exe"
         );
 
         driver = new ChromeDriver();

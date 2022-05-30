@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,8 +36,17 @@ public class FlashMain {
     @FindBy(id="answer")
     private WebElement new_answer_input;
 
-    @FindBy(xpath="")
+    @FindBy(xpath="/html/body/div[3]/input[3]")
     private WebElement submit_card_btn;
+
+    @FindBy(id="newCardFeedback")
+    private WebElement feedback;
+
+    WebDriver driver;
+
+    public String getFeedback() {
+        return driver.findElement(By.xpath("/html/body/div[3]/h3")).getText();
+    }
 
     public FlashMain(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -61,7 +71,7 @@ public class FlashMain {
     }
 
     public void enterIdInput() {
-        deck_id_input.sendKeys("50");
+        deck_id_input.sendKeys("52");
     }
 
     public void enterDeckNameInput() {
@@ -82,6 +92,10 @@ public class FlashMain {
 
     public void pressSubmitCardBtn() {
         submit_card_btn.click();
+    }
+
+    public String feedbackMessage() {
+        return feedback.getText();
     }
 
 }

@@ -7,7 +7,7 @@ from features.pages.flash_home import FlashHomePage
 
 def before_all(context):
     driver: WebDriver = webdriver.Chrome(
-        "C:/Users/patri/Documents/Coding/RevTraining/Python/chromedriver.exe")
+        "C:/Users/patri/Documents/Coding/chromedriver.exe")
     flash_home_page = FlashHomePage(driver)
 
     test = unittest.TestCase()
