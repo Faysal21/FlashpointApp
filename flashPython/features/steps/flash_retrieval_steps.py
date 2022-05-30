@@ -45,11 +45,11 @@ def click_submit_btn(context):
     sleep(1)
 
 
-@when('The answer should be Russo Brothers')
+@when('The answer should be Roland Emmerich')
 def verify_answer(context):
     flash_home: FlashHomePage = context.flash_home
     test: unittest.TestCase = context.unittest
-    test.assertEquals(flash_home.answer_display(), "Russo Brothers")
+    test.assertEquals(flash_home.answer_display(), "Roland Emmerich")
     sleep(1)
 
 
@@ -60,9 +60,9 @@ def press_next_button(context):
     sleep(.5)
 
 
-@then('The next question should be Who directed Independence Day?')
+@then('The next question should be Who directed Avengers Infinity War')
 def verify_next_question(context):
     flash_home: FlashHomePage = context.flash_home
     test: unittest.TestCase = context.unittest
-    test.assertEquals(flash_home.next_question_display(), 'Who directed Independence Day?')
+    test.assertEquals(flash_home.next_question_display(), 'Who directed Avengers Infinity War')
     sleep(1)

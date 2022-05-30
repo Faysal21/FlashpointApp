@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec26ad28-4300-4624-a5ef-004cf08eb514" name="Changes" comment="" />
+    <list default="true" id="ec26ad28-4300-4624-a5ef-004cf08eb514" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../flashPython/models/card.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flashPython/models/card.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flashPython/repos/test_card_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flashPython/repos/test_card_repo.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,13 +45,19 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/patri/Documents/Coding/RevTraining/Python/Flashpoint/FlashpointApp/CucumberTests",
+    "last_opened_file_path": "C:/Users/patri/Documents/Coding/RevTraining/Python/JavaMovieApp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\patri\Documents\Coding\RevTraining\Python\Flashpoint\FlashpointApp\FlashJava\src\testjava" />
+      <recent name="C:\Users\patri\Documents\Coding\RevTraining\Python\Flashpoint\FlashpointApp\FlashJava\src\testjava\java\repos" />
+    </key>
+  </component>
   <component name="RunManager" selected="TestNG.TestNGRunner">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.App" />
@@ -83,12 +92,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepoTest.deleteUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlashJava" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UserRepoTest" />
-      <option name="METHOD_NAME" value="deleteUser" />
-      <option name="TEST_OBJECT" value="method" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repos" />
+      <option name="MAIN_CLASS_NAME" value="repos.UserRepoTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,10 +137,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.TestNGRunner" />
+        <item itemvalue="JUnit.UserRepoTest" />
         <item itemvalue="Application.App" />
         <item itemvalue="Cucumber Java.Scenario: Flashcard Creation Works" />
         <item itemvalue="JUnit.UserRepoTest.updateUser" />
-        <item itemvalue="JUnit.UserRepoTest.deleteUser" />
       </list>
     </recent_temporary>
   </component>

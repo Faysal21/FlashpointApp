@@ -1,5 +1,5 @@
 class Card:
-    def __init__(self, card_id=0, question='', answer='', deck_id=''):
+    def __init__(self, card_id=0, question='', answer='', deck_id=None):
         self.card_id = card_id
         self.question = question
         self.answer = answer

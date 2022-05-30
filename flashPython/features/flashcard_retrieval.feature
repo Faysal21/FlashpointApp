@@ -6,6 +6,6 @@ Feature: Flashpoint Allows Users To Study With Flashcards
     When The User is on the movie directors set
     When The User types answer
     When The User clicks the submit button
-    When The answer should be Russo Brothers
+    When The answer should be Roland Emmerich
     When The User clicks the next card button
-    Then The next question should be Who directed Independence Day?
+    Then The next question should be Who directed Avengers Infinity War

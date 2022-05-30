@@ -1,3 +1,5 @@
+package repos;
+
 import models.User;
 import org.jetbrains.annotations.Nullable;
 import org.junit.jupiter.api.Test;
@@ -7,6 +9,7 @@ import repos.UserRepoImpl;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UserRepoTest {
@@ -26,7 +29,7 @@ public class UserRepoTest {
     @Test
     public void allUser(){
         List<User> ul = ur.getAllUsers();
-        assertEquals(ul.size(),1);
+        assertTrue(ul.size() > 1);
     };
 
     @Test

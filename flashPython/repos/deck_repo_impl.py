@@ -36,7 +36,7 @@ class DeckRepoImpl(DecksRepo):
             raise ResourceNotFound(f"Deck with id: {deck_id} - Not Found")
 
     def all_decks(self):
-        sql = "SELECT * FROM decks"
+        sql = "SELECT * FROM decks ORDER BY deck_id ASC"
         cursor = connection.cursor()
         cursor.execute(sql)
 
