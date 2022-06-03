@@ -5,11 +5,11 @@ from psycopg2._psycopg import OperationalError
 def create_connection():
     try:
         conn = psycopg2.connect(
-            database='flashpoint',
-            user='postgres',
-            password='password',
-            host='database-2.cw5dzzkwpm7i.us-west-1.rds.amazonaws.com',
-            port='5432'
+            database='',
+            user='',
+            password='',
+            host='',
+            port=''
         )
         return conn
     except OperationalError as e:
